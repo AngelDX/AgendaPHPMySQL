@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../server/lib.php');
 $con = new ConectorBD();
 
@@ -11,6 +12,8 @@ if ($con->initConexion()=='OK'){
 	while ($rows = $resul->fetch_array()) {
 		 
 		if(password_verify($passw,$rows["password"])) {
+			$_SESSION['id'] = $rows["id"];
+
 	    	$php_response=array("msg"=>"OK","data"=>"2");   
 	 		//echo json_encode($php_response,JSON_FORCE_OBJECT);
 		}else{

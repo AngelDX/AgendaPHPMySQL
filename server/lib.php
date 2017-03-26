@@ -23,6 +23,16 @@
       return $this->ejecutarQuery($sql);
     }
 
+    function obtenerEventos($id){
+      $sql="SELECT id,title,start,end FROM eventos WHERE usuario_id='".$id."'";
+      return $this->ejecutarQuery($sql);
+    }
+
+    function eliminarEvento($evento,$usuario){
+      $sql="DELETE FROM eventos WHERE id='".$evento."' AND usuario_id='".$usuario."'";
+      return $this->ejecutarQuery($sql);
+    }
+
     function newTable($nombre_tbl, $campos){
       $sql = 'CREATE TABLE '.$nombre_tbl.' (';
       $length_array = count($campos);
